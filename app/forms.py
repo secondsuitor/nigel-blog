@@ -10,9 +10,9 @@ class LoginForm(FlaskForm):
 	submit = SubmitField('Sign In')
 
 class RegistrationForm(FlaskForm):
-	username = StringField('Username', validators=[DataReequired()])
+	username = StringField('Username', validators=[DataRequired()])
 	email = StringField('Email', validators=[DataRequired(), Email()])
-	password= PasswordField('Password', Validators=[DataRequired()])
+	password= PasswordField('Password', validators=[DataRequired()])
 	password2 = PasswordField(
 		'Repeat Password', validators=[DataRequired(), EqualTo('password')])
 	submit = SubmitField('Register')
@@ -23,7 +23,7 @@ class RegistrationForm(FlaskForm):
 			raise ValidationError('Please use a differnt username.')
 
 	def validate_email(self, email):
-		email = User.quesry.filter_by(email.email.data).first()
+		email = User.query.filter_by(email=email.data).first()
 		if email is not None:
 			raise ValidationError('Please use a different email.')
 
