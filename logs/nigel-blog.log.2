@@ -1,12 +1,56 @@
-2020-11-01 09:53:47,848 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 09:54:16,086 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 09:54:23,587 ERROR: Exception on /edit_profile [POST] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+2020-11-01 12:06:00,289 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 12:40:02,846 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:12:12,247 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:13:17,842 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:16:45,418 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:35:42,042 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:35:49,743 ERROR: Exception on /index [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1276, in _execute_context
-    self.dialect.do_execute(
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.IntegrityError: UNIQUE constraint failed: user.username
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kriminel/nigel-blog/app/routes.py", line 19, in index
+    form = PostForm()
+NameError: name 'PostForm' is not defined
+2020-11-01 13:36:57,209 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:37:16,816 ERROR: Exception on /index [POST] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kriminel/nigel-blog/app/routes.py", line 21, in index
+    post = Post(body=form.post.data, author=current_user)
+NameError: name 'Post' is not defined
+2020-11-01 13:38:46,941 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:40:38,827 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:42:31,708 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:42:34,760 ERROR: Exception on /user/Susan [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 406, in _entity_descriptor
+    return getattr(entity, key)
+AttributeError: type object 'Post' has no attribute 'username'
 
 The above exception was the direct cause of the following exception:
 
@@ -25,56 +69,19 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/kriminel/nigel-blog/app/routes.py", line 85, in edit_profile
-    db.session.commit()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/scoping.py", line 163, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1042, in commit
-    self.transaction.commit()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 504, in commit
-    self._prepare_impl()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 483, in _prepare_impl
-    self.session.flush()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2523, in flush
-    self._flush(objects)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2664, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
-    compat.raise_(
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
-    raise exception
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2624, in _flush
-    flush_context.execute()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 422, in execute
-    rec.execute(self)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 586, in execute
-    persistence.save_obj(
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 230, in save_obj
-    _emit_update_statements(
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 994, in _emit_update_statements
-    c = cached_connections[connection].execute(
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1011, in execute
-    return meth(self, multiparams, params)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 298, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1124, in _execute_clauseelement
-    ret = self._execute_context(
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1316, in _execute_context
-    self._handle_dbapi_exception(
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1510, in _handle_dbapi_exception
+  File "/home/kriminel/nigel-blog/app/routes.py", line 70, in user
+    posts = Post.query.filter_by(username=username).all()
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 1905, in filter_by
+    clauses = [
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 1906, in <listcomp>
+    _entity_descriptor(zero, key) == value
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 408, in _entity_descriptor
     util.raise_(
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
     raise exception
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1276, in _execute_context
-    self.dialect.do_execute(
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 593, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
-[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
-[parameters: ('Peter2', 'susan test', 5)]
-(Background on this error at: http://sqlalche.me/e/13/gkpj)
-2020-11-01 10:05:17,295 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 10:05:25,846 ERROR: Exception on /edit_profile [POST] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+sqlalchemy.exc.InvalidRequestError: Entity '<class 'app.models.Post'>' has no property 'username'
+2020-11-01 13:43:41,522 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:43:46,058 ERROR: Exception on /user/Susan [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -90,40 +97,20 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/kriminel/nigel-blog/app/routes.py", line 82, in edit_profile
-    if form.validate_on_submit():
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_wtf/form.py", line 100, in validate_on_submit
-    return self.is_submitted() and self.validate()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/wtforms/form.py", line 318, in validate
-    return super(Form, self).validate(extra)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/wtforms/form.py", line 150, in validate
-    if not field.validate(self, extra):
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/wtforms/fields/core.py", line 226, in validate
-    stop_validation = self._run_validation_chain(form, chain)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/wtforms/fields/core.py", line 246, in _run_validation_chain
-    validator(form, self)
-  File "/home/kriminel/nigel-blog/app/forms.py", line 40, in validate_username
-    if username.data != self.original_username:
-AttributeError: 'EditProfileForm' object has no attribute 'original_username'
-2020-11-01 10:06:11,881 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 10:11:57,565 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 10:13:57,990 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 10:36:49,511 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 10:37:04,469 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 10:38:42,797 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 10:39:00,017 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:45:01,216 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:46:18,788 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:46:47,835 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:46:59,887 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:47:21,258 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:48:08,806 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:48:48,302 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:49:57,463 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:50:51,924 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:51:13,197 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:51:37,573 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:51:57,253 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 11:52:37,972 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 12:04:57,242 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 12:05:42,587 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+  File "/home/kriminel/nigel-blog/app/routes.py", line 70, in user
+    posts = Post.query.filter_by(author=username).all()
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 1905, in filter_by
+    clauses = [
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 1906, in <listcomp>
+    _entity_descriptor(zero, key) == value
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/sql/operators.py", line 365, in __eq__
+    return self.operate(eq, other)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py", line 219, in operate
+    return op(self.comparator, *other, **kwargs)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 1267, in __eq__
+    self.property._optimized_compare(
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 1648, in _optimized_compare
+    raise sa_exc.ArgumentError(
+sqlalchemy.exc.ArgumentError: Mapped instance expected for relationship comparison to object.   Classes, queries and other SQL elements are not accepted in this context; for comparison with a subquery, use Post.author.has(**criteria).
+2020-11-01 13:51:39,800 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:52:08,216 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]

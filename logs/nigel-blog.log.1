@@ -1,10 +1,4 @@
-2020-11-01 12:06:00,289 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 12:40:02,846 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:12:12,247 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:13:17,842 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:16:45,418 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:35:42,042 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:35:49,743 ERROR: Exception on /index [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+2020-11-01 13:52:11,427 ERROR: Exception on /user/Susan [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -20,11 +14,14 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/kriminel/nigel-blog/app/routes.py", line 19, in index
-    form = PostForm()
-NameError: name 'PostForm' is not defined
-2020-11-01 13:36:57,209 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:37:16,816 ERROR: Exception on /index [POST] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+  File "/home/kriminel/nigel-blog/app/routes.py", line 72, in user
+    return render_template('user.html', user=user, posts=posts, form=form)
+NameError: name 'posts' is not defined
+2020-11-01 13:53:14,151 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:55:28,679 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 13:57:01,335 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:01:45,587 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:01:47,381 ERROR: Exception on /index [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -40,20 +37,11 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/kriminel/nigel-blog/app/routes.py", line 21, in index
-    post = Post(body=form.post.data, author=current_user)
-NameError: name 'Post' is not defined
-2020-11-01 13:38:46,941 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:40:38,827 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:42:31,708 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:42:34,760 ERROR: Exception on /user/Susan [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 406, in _entity_descriptor
-    return getattr(entity, key)
-AttributeError: type object 'Post' has no attribute 'username'
-
-The above exception was the direct cause of the following exception:
-
+  File "/home/kriminel/nigel-blog/app/routes.py", line 28, in index
+    posts = current_user.followed_posts().pagination(
+AttributeError: 'BaseQuery' object has no attribute 'pagination'
+2020-11-01 14:02:29,061 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:02:31,856 ERROR: Exception on /index [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -69,19 +57,48 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/kriminel/nigel-blog/app/routes.py", line 70, in user
-    posts = Post.query.filter_by(username=username).all()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 1905, in filter_by
-    clauses = [
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 1906, in <listcomp>
-    _entity_descriptor(zero, key) == value
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/base.py", line 408, in _entity_descriptor
-    util.raise_(
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 182, in raise_
-    raise exception
-sqlalchemy.exc.InvalidRequestError: Entity '<class 'app.models.Post'>' has no property 'username'
-2020-11-01 13:43:41,522 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:43:46,058 ERROR: Exception on /user/Susan [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+  File "/home/kriminel/nigel-blog/app/routes.py", line 30, in index
+    return render_template('index.html', title='Home', posts=posts, form=form)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kriminel/nigel-blog/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/kriminel/nigel-blog/app/templates/base.html", line 31, in top-level template code
+    {% block content %}{% endblock %}
+  File "/home/kriminel/nigel-blog/app/templates/index.html", line 18, in block "content"
+    {% for post in posts %}
+TypeError: 'Pagination' object is not iterable
+2020-11-01 14:04:06,620 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:11:19,431 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:12:18,785 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:17:27,672 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:18:07,090 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:20:53,046 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:21:28,949 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:24:10,152 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:30:15,639 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:31:19,782 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:32:42,465 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:33:21,724 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-01 14:35:28,976 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+2020-11-06 17:45:07,901 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
+2020-11-07 10:54:58,374 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
+2020-11-07 10:55:50,372 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
+2020-11-07 10:57:06,729 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
+2020-11-07 10:57:37,376 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
+2020-11-07 10:58:39,047 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
+2020-11-07 16:48:41,765 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
+2020-11-07 16:50:12,027 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
+2020-11-07 16:50:53,152 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
+2020-11-07 16:51:10,932 ERROR: Exception on /reset_password_request [POST] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -95,22 +112,11 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/kriminel/nigel-blog/app/routes.py", line 70, in user
-    posts = Post.query.filter_by(author=username).all()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 1905, in filter_by
-    clauses = [
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 1906, in <listcomp>
-    _entity_descriptor(zero, key) == value
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/sql/operators.py", line 365, in __eq__
-    return self.operate(eq, other)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/attributes.py", line 219, in operate
-    return op(self.comparator, *other, **kwargs)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 1267, in __eq__
-    self.property._optimized_compare(
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/sqlalchemy/orm/relationships.py", line 1648, in _optimized_compare
-    raise sa_exc.ArgumentError(
-sqlalchemy.exc.ArgumentError: Mapped instance expected for relationship comparison to object.   Classes, queries and other SQL elements are not accepted in this context; for comparison with a subquery, use Post.author.has(**criteria).
-2020-11-01 13:51:39,800 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:52:08,216 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
+  File "/home/kriminel/nigel-blog/app/routes.py", line 162, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/kriminel/nigel-blog/app/email.py", line 13, in send_password_reset_email
+    token = user.get_reset_password_token()
+  File "/home/kriminel/nigel-blog/app/models.py", line 58, in get_reset_password_token
+    {'reset_password': self.id, 'exp': time() + exprires_in},
+NameError: name 'exprires_in' is not defined
+2020-11-07 16:53:18,218 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
