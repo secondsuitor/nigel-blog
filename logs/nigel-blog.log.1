@@ -1,4 +1,4 @@
-2020-11-01 13:52:11,427 ERROR: Exception on /user/Susan [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+2020-11-09 21:43:13,965 ERROR: Exception on /index [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -14,51 +14,8 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/home/kriminel/nigel-blog/app/routes.py", line 72, in user
-    return render_template('user.html', user=user, posts=posts, form=form)
-NameError: name 'posts' is not defined
-2020-11-01 13:53:14,151 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:55:28,679 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 13:57:01,335 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:01:45,587 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:01:47,381 ERROR: Exception on /index [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/kriminel/nigel-blog/app/routes.py", line 28, in index
-    posts = current_user.followed_posts().pagination(
-AttributeError: 'BaseQuery' object has no attribute 'pagination'
-2020-11-01 14:02:29,061 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:02:31,856 ERROR: Exception on /index [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/kriminel/nigel-blog/app/routes.py", line 30, in index
-    return render_template('index.html', title='Home', posts=posts, form=form)
+  File "/home/kriminel/nigel-blog/app/routes.py", line 36, in index
+    return render_template('index.html', title='Home', posts=posts.items, form=form, next_url=next_url, prev_url=prev_url)
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
     return _render(
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
@@ -71,34 +28,26 @@ Traceback (most recent call last):
     raise value.with_traceback(tb)
   File "/home/kriminel/nigel-blog/app/templates/index.html", line 1, in top-level template code
     {% extends "base.html" %}
-  File "/home/kriminel/nigel-blog/app/templates/base.html", line 31, in top-level template code
-    {% block content %}{% endblock %}
-  File "/home/kriminel/nigel-blog/app/templates/index.html", line 18, in block "content"
-    {% for post in posts %}
-TypeError: 'Pagination' object is not iterable
-2020-11-01 14:04:06,620 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:11:19,431 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:12:18,785 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:17:27,672 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:18:07,090 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:20:53,046 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:21:28,949 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:24:10,152 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:30:15,639 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:31:19,782 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:32:42,465 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:33:21,724 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-01 14:35:28,976 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:40]
-2020-11-06 17:45:07,901 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
-2020-11-07 10:54:58,374 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
-2020-11-07 10:55:50,372 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
-2020-11-07 10:57:06,729 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
-2020-11-07 10:57:37,376 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
-2020-11-07 10:58:39,047 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
-2020-11-07 16:48:41,765 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
-2020-11-07 16:50:12,027 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
-2020-11-07 16:50:53,152 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
-2020-11-07 16:51:10,932 ERROR: Exception on /reset_password_request [POST] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
+  File "/home/kriminel/nigel-blog/app/templates/base.html", line 1, in top-level template code
+    {% extends "bootstrap/base.html" %}
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/kriminel/nigel-blog/app/templates/index.html", line 19, in block "content"
+    {% include '_post.html' %}
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kriminel/nigel-blog/app/templates/_post.html", line 12, in template
+    said {{ moment.post.timestap).fromNow() }}:
+jinja2.exceptions.TemplateSyntaxError: unexpected ')'
+2020-11-09 21:43:15,228 ERROR: Exception on /index [GET] [in /home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
     response = self.full_dispatch_request()
@@ -112,11 +61,38 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/kriminel/nigel-blog/app/routes.py", line 162, in reset_password_request
-    send_password_reset_email(user)
-  File "/home/kriminel/nigel-blog/app/email.py", line 13, in send_password_reset_email
-    token = user.get_reset_password_token()
-  File "/home/kriminel/nigel-blog/app/models.py", line 58, in get_reset_password_token
-    {'reset_password': self.id, 'exp': time() + exprires_in},
-NameError: name 'exprires_in' is not defined
-2020-11-07 16:53:18,218 INFO: Nigel-Blog startup [in /home/kriminel/nigel-blog/app/__init__.py:43]
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/kriminel/nigel-blog/app/routes.py", line 36, in index
+    return render_template('index.html', title='Home', posts=posts.items, form=form, next_url=next_url, prev_url=prev_url)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kriminel/nigel-blog/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/kriminel/nigel-blog/app/templates/base.html", line 1, in top-level template code
+    {% extends "bootstrap/base.html" %}
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 23, in block "body"
+    {% block content -%}
+  File "/home/kriminel/nigel-blog/app/templates/index.html", line 19, in block "content"
+    {% include '_post.html' %}
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/home/kriminel/nigel-blog/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/home/kriminel/nigel-blog/app/templates/_post.html", line 12, in template
+    said {{ moment.post.timestap).fromNow() }}:
+jinja2.exceptions.TemplateSyntaxError: unexpected ')'
