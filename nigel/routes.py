@@ -4,6 +4,9 @@ from nigel import app
 from nigel.forms import LoginForm
 from nigel.models import User
 from werkzeug.urls import url_parse
+from nigel import db
+from nigel.forms import RegistrationForm
+
 
 @app.route('/')
 @app.route('/index')
@@ -47,4 +50,19 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('/index'))
+    return redirect(url_for('index'))
+
+@app.route('/registration', methods=['GET', 'POST'])
+def registration():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user')
+        return redirect(url_for('login'))
+    return render_template('registration.html', title='Register', form=form)
+
