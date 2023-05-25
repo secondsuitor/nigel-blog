@@ -1,6 +1,9 @@
     <table>
         <tr valign="top">
             <td>&nbsp;</td>
-            <td>{{ post.author.username }} yells: <b>{{ post.body }}</td>
+            <td>
+                <a href="{{ url_for('user', username=post.author.username) }}">
+                    {{ post.author.username }}</a>
+                yells: <b>{{ post.body }}</td>
         </tr>
     </table>
