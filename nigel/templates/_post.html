@@ -1,9 +1,12 @@
-    <table>
-        <tr valign="top">
-            <td>&nbsp;</td>
+<table class="table table-hover">
+        <tr>
             <td>
                 <a href="{{ url_for('user', username=post.author.username) }}">
-                    {{ post.author.username }}</a>
-                yells: <b>{{ post.body }}</td>
+                    {{ post.author.username }}
+                </a>
+                says:
+                <br>
+                {{ post.body }}
+            </td>
         </tr>
     </table>
