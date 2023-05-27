@@ -6,8 +6,10 @@ from flask_migrate import Migrate
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
+bootstrap = Bootstrap(app)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
