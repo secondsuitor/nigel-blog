@@ -18,6 +18,8 @@ login = LoginManager(app)
 login.login_view = 'login'
 moment = Moment(app)
 
+from nigel.errors import bp as errors_bp
+app.register_blueprint(errors_bp)
 
 if not app.debug:
     # email error alerts
